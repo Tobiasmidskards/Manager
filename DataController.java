@@ -10,7 +10,6 @@ public class DataController{
 	public DataController(){
 		teams = new ArrayList<Team>();
 		players = new ArrayList<Player>();
-		loadPlayerDB();
 		loadTeamDB();
 	}
 
@@ -34,7 +33,11 @@ public class DataController{
 
 				team = new Team(entry[0], entry[1], entry[2]);
 				playerIDs = entry[3].split(",");
-				
+
+				for (String p : playerIDs) {
+					team.addPlayer(searchPlayerDB(p));
+				}
+
 				teams.add(team);
 			}
 
@@ -46,9 +49,9 @@ public class DataController{
 
 	}
 	
-	public void loadPlayerDB(){
+	public Player searchPlayerDB(String playerID){
 		String[] entry;
-		Player player;
+		Player player = new Player();
 
 		try {
 			File tsv = new File("database/playerDB.tsv");
@@ -63,12 +66,12 @@ public class DataController{
 			while(scanner.hasNext()){
 				entry = scanner.nextLine().split("\t");
 
-				player = new Player();
-				player.setID(Integer.parseInt(entry[0]));
-				player.setName(entry[1]);
-				player.setCountry(entry[2]);
-				player.setBirth(Integer.parseInt(entry[3]));
-				players.add(player);
+				if (playerID.equals(entry[0])) {
+					player.setID(Integer.parseInt(entry[0]));
+					player.setName(entry[1]);
+					player.setCountry(entry[2]);
+					player.setBirth(Integer.parseInt(entry[3]));
+				}
 			}
 
 			scanner.close();
@@ -76,6 +79,8 @@ public class DataController{
 		catch (IOException e) {
 			System.out.println(e);
 		}
+
+		return player;
 
     }
 
@@ -94,7 +99,14 @@ public class DataController{
 	public void printAllTeams(){
 		System.out.print("\n");
         for (int i = 0; i<teams.size(); i++) {
-			System.out.printf("%s: %s\t%s\t%s\n", i, teams.get(i).teamID, teams.get(i).name, teams.get(i).manager);
+			System.out.printf("%s: %s\t%s\t%s\nPlayers:\n", i, teams.get(i).teamID, teams.get(i).name, teams.get(i).manager);
+
+			for (int j = 0; j<teams.get(i).players.size(); j++) {
+				System.out.printf("%s\n", teams.get(i).players.get(j).name);
+			}
+
+			System.out.print("\n");
+			
 		}
 		System.out.print("\n");
     }
