@@ -2,9 +2,9 @@ public class Team{
     String name;
     String manager;
     Player[] players;
-    int teamID;
+    String teamID;
 
-    public Team(int teamID, String name, String manager){
+    public Team(String teamID, String name, String manager){
         this.name = name;
         this.manager = manager;
         this.teamID = teamID;

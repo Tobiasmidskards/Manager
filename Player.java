@@ -21,4 +21,20 @@ public class Player{
         this.playerID = -1;
     }
 
+    public void setID(int playerID){
+        this.playerID = playerID;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setCountry(String country){
+        this.country = country;
+    }
+
+    public void setBirth(int birth){
+        this.birth = birth;
+    }
+
 }
