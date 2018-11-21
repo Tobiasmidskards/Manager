@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class DataController{
 
 	private ArrayList<Team> teams;
+	private User user;
 
 	public DataController(){
 		teams = new ArrayList<Team>();
+		user = new User();
 		loadTeamDB();
 	}
 
@@ -80,7 +82,32 @@ public class DataController{
 
 		return player;
 
-    }
+	}
+	
+	public boolean login(String username, String password){
+		user.setTeamID("00001");
+		return true;
+	}
+
+	public void logout(){
+		user = new User();
+	}
+
+	public String getActiveUser(){
+		if(isLoggedIn()){
+			return user.getUsername();
+		} else {
+			return "no user logged in";
+		}
+	}
+
+	public boolean isLoggedIn(){
+		if(!"".equals(user.getTeamID())){
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public void printAllTeams(){
 		System.out.print("\n");

@@ -6,6 +6,7 @@ public class Player{
 
     private int[] abillities;
     private String position, leg;
+    private double potential;
 
     private int value;
 
@@ -13,12 +14,13 @@ public class Player{
         this.name = "";
         this.country = "";
         this.birth = -1;
-        this.abillities = new int[0];
+        this.abillities = new int[10];
         this.value = 0;
         this.position = "NA";
         this.leg = "NA";
         this.height = 0;
         this.playerID = -1;
+        this.potential = 0.0;
     }
 
     public void setID(int playerID){
