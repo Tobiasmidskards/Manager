@@ -5,11 +5,9 @@ import java.util.Scanner;
 public class DataController{
 
 	private ArrayList<Team> teams;
-	private ArrayList<Player> players;
 
 	public DataController(){
 		teams = new ArrayList<Team>();
-		players = new ArrayList<Player>();
 		loadTeamDB();
 	}
 
@@ -84,25 +82,13 @@ public class DataController{
 
     }
 
-    public void createTeam(){
-
-	}
-	
-	public void createPlayer(){
-
-	}
-
-	public ArrayList<Team> getTeams(){
-		return teams;
-	}
-
 	public void printAllTeams(){
 		System.out.print("\n");
         for (int i = 0; i<teams.size(); i++) {
-			System.out.printf("%s: %s\t%s\t%s\nPlayers:\n", i, teams.get(i).teamID, teams.get(i).name, teams.get(i).manager);
+			System.out.printf("%s: %s\t%s\t%s\nPlayers:\n", i, teams.get(i).getTeamID(), teams.get(i).getName(), teams.get(i).getManager());
 
-			for (int j = 0; j<teams.get(i).players.size(); j++) {
-				System.out.printf("%s\n", teams.get(i).players.get(j).name);
+			for (int j = 0; j<teams.get(i).getPlayers().size(); j++) {
+				System.out.printf("%s\n", teams.get(i).getPlayers().get(j).getName());
 			}
 
 			System.out.print("\n");

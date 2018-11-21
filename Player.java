@@ -1,13 +1,13 @@
 public class Player{
-    String name, country;
-    int birth;
-    int height;
-    int playerID;
+    private String name, country;
+    private int birth;
+    private int height;
+    private int playerID;
 
-    int[] abillities;
-    String position, leg;
+    private int[] abillities;
+    private String position, leg;
 
-    int value;
+    private int value;
 
     public Player() {
         this.name = "";
@@ -35,6 +35,10 @@ public class Player{
 
     public void setBirth(int birth){
         this.birth = birth;
+    }
+
+    public String getName(){
+        return name;
     }
 
 }
