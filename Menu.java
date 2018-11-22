@@ -29,17 +29,28 @@ public class Menu{
 				case LOGIN:
 					loginDisplay();
 					break;
+				case PLAYER:
+					break;
+				case MARKED:
+					break;
+				case TEAM:
+					teamDisplay();
+					break;
+				case CONTROL:
+					break;
 				default:
 					break;
 			}
 		}
 
 		ui.exit();
+		scanner.close();
 	}
 
 	public void menuDisplay() {
 		ui.mainMenu(datacontroller.isLoggedIn());
 		input = scanner.nextLine();
+		
 		switch(input){
 			case "1":
 				state = MenuStates.LOGIN;
@@ -50,7 +61,7 @@ public class Menu{
 		}
 	}
 
-	public void myteamDisplay(){
+	public void teamDisplay(){
 
 	}
 
@@ -72,6 +83,8 @@ public class Menu{
 			}			
 			
 		}
+
+		ui.bot();
 
 		state = MenuStates.MAINMENU;
 		promt();

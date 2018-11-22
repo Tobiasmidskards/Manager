@@ -1,7 +1,8 @@
 public enum MenuStates{
 	MAINMENU,
 	CONTROL,
-	MYTEAM,
+	TEAM,
+	PLAYER,
 	MARKED,
 	LOGIN
 }

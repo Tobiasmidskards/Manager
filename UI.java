@@ -24,7 +24,7 @@ public class UI{
 		} else {
 			p("\n1. Login");
 		}
-		p("\n2. exit\n");
+		p("\n2. Exit\n");
 		bot();
 		input();
 	}
