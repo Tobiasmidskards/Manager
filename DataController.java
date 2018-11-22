@@ -85,8 +85,37 @@ public class DataController{
 	}
 	
 	public boolean login(String username, String password){
-		user.setTeamID("00001");
-		return true;
+		String[] entry;
+
+		try {
+			File tsv = new File("database/userDB.tsv");
+
+			if (!tsv.canRead()) {
+				System.out.println("Cannot read from file");
+			}
+
+			Scanner scanner = new Scanner(tsv);
+			entry = scanner.nextLine().split("\t");
+
+			while(scanner.hasNext()){
+				entry = scanner.nextLine().split("\t");
+
+				if (username.equals(entry[2]) && password.equals(entry[3])) {
+					user.setTeamID(entry[0]);
+					user.setName(entry[1]);
+					user.setUsername(entry[2]);
+					user.setActive(true);
+
+					return true;
+				}
+			}
+
+			scanner.close();
+		}
+		catch (IOException e) {
+			System.out.println(e);
+		}
+		return false;
 	}
 
 	public void logout(){
@@ -102,7 +131,7 @@ public class DataController{
 	}
 
 	public boolean isLoggedIn(){
-		if(!"".equals(user.getTeamID())){
+		if(user.getActive()){
 			return true;
 		} else {
 			return false;

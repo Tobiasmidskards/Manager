@@ -37,6 +37,7 @@ public class Menu{
 					teamDisplay();
 					break;
 				case CONTROL:
+					controlDisplay();
 					break;
 				default:
 					break;
@@ -65,6 +66,30 @@ public class Menu{
 
 	}
 
+	public void controlDisplay(){
+		ui.control(datacontroller.getActiveUser());
+
+		input = scanner.nextLine();
+		switch(input){
+			case "1":
+				
+				break;
+			case "2":
+				
+				break;
+			case "3":
+				
+				break;
+			case "4":
+				
+				break;
+			case "5":
+				
+				break;
+			
+		}
+	}
+
 	public void loginDisplay(){
 		if(datacontroller.isLoggedIn()) {
 			ui.logout();
@@ -78,15 +103,14 @@ public class Menu{
 	
 			if(datacontroller.login(username, password)){
 				System.out.printf("\nHi %s! You are now logged in.\n", username);
+				state = MenuStates.CONTROL;
 			} else {
 				ui.p("\nUsername/Password was incorrect. Try again!\n");
+				state = MenuStates.MAINMENU;
 			}			
-			
 		}
 
-		ui.bot();
-
-		state = MenuStates.MAINMENU;
+		ui.bot();		
 		promt();
 
 	}

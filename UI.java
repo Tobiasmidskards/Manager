@@ -15,6 +15,20 @@ public class UI{
 		p("\n░░░▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░\n");
 	}
 
+	public void control(String user){
+		top();
+		p("\nControl Panel\n");
+		System.out.printf("User: %s\n", user);
+
+		p("\n1. My Team");
+		p("\n2. Training facility");
+		p("\n3. Match program");
+		p("\n4. World");
+		p("\n\n5. Back");
+		bot();
+		input();
+	}
+
 	public void mainMenu(boolean loggedIn){
 		top();
 		p("\nWelcome to Manager!\n");
