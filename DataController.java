@@ -124,7 +124,15 @@ public class DataController{
 
 	public String getActiveUser(){
 		if(isLoggedIn()){
-			return user.getUsername();
+			return user.getName();
+		} else {
+			return "no user logged in";
+		}
+	}
+
+	public String getActiveTeamID(){
+		if(isLoggedIn()){
+			return user.getTeamID();
 		} else {
 			return "no user logged in";
 		}
@@ -135,6 +143,19 @@ public class DataController{
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public void printTeam(String teamID){
+		System.out.print("\n");
+		for(Team t : teams){
+			if(t.getTeamID().equals(teamID)){
+				System.out.printf("%s\t%s\nPlayers:\n", t.getName(), t.getManager());
+
+				for (int j = 0; j<t.getPlayers().size(); j++) {
+					System.out.printf("%s\n", t.getPlayers().get(j).getName());
+				}
+			}
 		}
 	}
 

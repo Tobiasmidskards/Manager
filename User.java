@@ -32,6 +32,10 @@ public class User{
 		return active;
 	}
 
+	public String getName(){
+		return name;
+	}
+
 	public String getTeamID(){
 		return teamID;
 	}

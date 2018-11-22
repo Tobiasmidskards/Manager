@@ -72,7 +72,8 @@ public class Menu{
 		input = scanner.nextLine();
 		switch(input){
 			case "1":
-				
+				datacontroller.printTeam(datacontroller.getActiveTeamID());
+				promt();
 				break;
 			case "2":
 				
@@ -81,10 +82,14 @@ public class Menu{
 				
 				break;
 			case "4":
-				
+		
 				break;
 			case "5":
-				
+				datacontroller.printAllTeams();
+				promt();	
+				break;
+			case "6":
+				state = MenuStates.LOGIN;
 				break;
 			
 		}
@@ -94,6 +99,7 @@ public class Menu{
 		if(datacontroller.isLoggedIn()) {
 			ui.logout();
 			datacontroller.logout();
+			state = MenuStates.MAINMENU;
 		} else {
 			ui.login();
 			ui.p("\nUsername: ");

@@ -23,8 +23,9 @@ public class UI{
 		p("\n1. My Team");
 		p("\n2. Training facility");
 		p("\n3. Match program");
-		p("\n4. World");
-		p("\n\n5. Back");
+		p("\n4. Marked");
+		p("\n5. World");
+		p("\n\n6. Logout\n");
 		bot();
 		input();
 	}
